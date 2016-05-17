@@ -1,2 +1,2 @@
-# Team8Project
+# Flextination
 Travel and sightseeing Web Program
