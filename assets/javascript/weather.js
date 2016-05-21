@@ -19,8 +19,11 @@
           data: "json"
         })
         .done(function(response) {
-          console.log(response.object);
-          $('#destinationWeatherContent').html(response.object.list);
+          console.log(response.list[0].clouds);
+          $('#destinationWeatherContent').append('<p>humidity = '+response.list[0].humidity+'</p>');
+          $('#destinationWeatherContent').append('<p>pressure = '+response.list[0].pressure+'</p>');
+          $('#destinationWeatherContent').append('<p>rain = '+response.list[0].rain+'</p>');
+          $('#destinationWeatherContent').append('<p>windspeed = '+response.list[0].speed+'mph</p>');
         });
     });
 
