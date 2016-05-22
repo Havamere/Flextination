@@ -1,23 +1,21 @@
 /*Spacing Divs*/
-.wrapper {
+/*.wrapper {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -80px;
+    margin: 0 auto -10px;
     width: 100%;
     max-width: 960px;
-    clear: both;
-}
+   clear: both;
+}*/
 .push {
-    height: 80px;
+    height: 10px;
     clear: both;
 }
-.container {
+/*.container {
     width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
     clear: both;
-}
+}*/
 
 body {
     text-align: center;
@@ -27,7 +25,7 @@ body {
 #earth {
     width: 200px;
     height: 200px;
-    margin: 10px;
+    margin: 8%;
     background-size: 400px;
     background: url(http://www.noirextreme.com/digital/Earth-Color4096.jpg);
     border-radius: 50%;
@@ -52,15 +50,14 @@ body {
 
     /* Content of Webpage */
 .jumbotron{
-    margin-top: 200px;
+    margin-top: 2px;
     z-index: 0;
-    background-color: rgba(255, 255, 255, .5)
+    background-color: rgba(255, 255, 255, .0)
 }
 
   /*Footer*/
-footer {
+.footer {
     position: fixed;
-    width: 100%;
     padding: 5px 0;
     border-top: 8px solid gold;
     clear: both;
@@ -74,58 +71,99 @@ footer {
 
 /* MEDIA-QUERIES, mobile-first — Bootstrap 3 */
 /* iPhone Retina */
-@media only screen and (min-width: 320px) {}
+@media only screen and (min-width: 320px) {
+
+    #earth {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+        background-size: 400px;
+        animation-duration: 4s;
+        margin-left: 18%;
+    }
+
+    @keyframes rotate {
+      to { background-position-x: 400px; }
+    }
+
+    .jumbotron{
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+
+    #earth {
+        width: 250px;
+        height: 250px;
+        margin: 10px;
+        background-size: 500px;
+        animation-duration: 4s;
+        margin-left: 20%;
+    }
+
+    @keyframes rotate {
+      to { background-position-x: 500px; }
+    }
+
+    .jumbotron{
+        margin-top: 25px;
+    }
+}
 
 /* EXTRA-small devices, phones */
 @media only screen and (min-width: 480px) {
     #earth {
-        width: 200px;
-        height: 200px;
+        width: 300px;
+        height: 300px;
         margin: 10px;
-        background-size: 200px;
+        background-size: 600px;
         animation-duration: 4s;
+        margin-left: 22%;
     }
 
     @keyframes rotate {
-      to { background-position-x: 400px; }
+      to { background-position-x: 600px; }
     }
 
     .jumbotron{
-        margin-top: 200px;
+        margin-top: 50px;
     }
 }
 
 /* SMALL devices, tablets */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 728px) {
     #earth {
-        width: 200px;
-        height: 200px;
+        width: 400px;
+        height: 400px;
         margin: 10px;
-        background-size: 200px;
-        animation-duration: 4s;
+        background-size: 800px;
+        animation-duration: 6s;
+        margin-left: 25%;
     }
 
     @keyframes rotate {
-      to { background-position-x: 400px; }
+      to { background-position-x: 800px; }
     }
 
     .jumbotron{
-        margin-top: 200px;
+        margin-top: 100px;
     }
 }
 
 /* MEDIUM devices, desktops */
 @media only screen and (min-width: 992px) {
     #earth {
-        width: 200px;
-        height: 200px;
+        width: 600px;
+        height: 600px;
         margin: 10px;
-        background-size: 200px;
-        animation-duration: 4s;
+        background-size: 1200px;
+        animation-duration: 10s;
+         margin-left: 20%;
     }
 
     @keyframes rotate {
-      to { background-position-x: 400px; }
+      to { background-position-x: 1200px; }
     }
 
     .jumbotron{
@@ -136,18 +174,19 @@ footer {
 /* LARGE devices, widescreens */
 @media only screen and (min-width: 1200px) {
     #earth {
-        width: 200px;
-        height: 200px;
+        width: 800px;
+        height: 800px;
         margin: 10px;
-        background-size: 200px;
-        animation-duration: 4s;
+        background-size: 1600px;
+        animation-duration: 20s;
+        margin-left: 20%;
     }
 
     @keyframes rotate {
-      to { background-position-x: 400px; }
+      to { background-position-x: 1600px; }
     }
 
     .jumbotron{
-        margin-top: 200px;
+        margin-top: 300px;
     }    
 }
