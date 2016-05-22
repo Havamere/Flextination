@@ -1,24 +1,13 @@
 /*Spacing Divs*/
-/*.wrapper {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -10px;
-    width: 100%;
-    max-width: 960px;
-   clear: both;
-}*/
+
 .push {
     height: 10px;
     clear: both;
 }
-/*.container {
-    width: 100%;
-    clear: both;
-}*/
 
 body {
     text-align: center;
+    background-image: url(../images/beautiful-blue-stars-fill.jpg)
 }
 
 /*thanks to Kushagra Gour for the spinning earth background*/
@@ -27,7 +16,7 @@ body {
     height: 200px;
     margin: 8%;
     background-size: 400px;
-    background: url(http://www.noirextreme.com/digital/Earth-Color4096.jpg);
+    background: url(../images/Earth-Color4096.jpg);
     border-radius: 50%;
     background-size: 200px;
     box-shadow: inset 16px 0 40px 6px rgb(0, 0, 0),
@@ -49,6 +38,10 @@ body {
 }
 
     /* Content of Webpage */
+#travel{
+    color: silver;
+}
+
 .jumbotron{
     margin-top: 2px;
     z-index: 0;
@@ -59,7 +52,7 @@ body {
 .footer {
     position: fixed;
     padding: 5px 0;
-    border-top: 8px solid gold;
+    border-top: 4px solid blue;
     clear: both;
     text-align: center;
     background-color: black;
@@ -67,6 +60,7 @@ body {
     width: 100%;
     z-index: 3;
     bottom: 0;
+    color: silver;
 }
 
 /* MEDIA-QUERIES, mobile-first — Bootstrap 3 */
