@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 $( function () {
         $('#datetimepicker6').datetimepicker();
         $('#datetimepicker7').datetimepicker({
@@ -11,7 +11,6 @@ $( function () {
             $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
         });
     });
-=======
 $( document ).ready(function() {
 
 	//Flight information js
@@ -28,5 +27,3 @@ $( document ).ready(function() {
 
 })
 
-
->>>>>>> master

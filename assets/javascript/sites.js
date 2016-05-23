@@ -159,7 +159,6 @@ function callback(results, status) {
 
 function addMarker(place) {
 
-=======
          // Try to get user physical location
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
@@ -292,7 +291,6 @@ function callback(results, status) {
 
 //Function that adds markers
 function addMarker(place) {
->>>>>>> master
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location,
