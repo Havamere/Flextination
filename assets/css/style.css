@@ -32,3 +32,19 @@ footer {
     z-index: 3;
     bottom: 0;
 }
+
+/* MEDIA-QUERIES, mobile-first — Bootstrap 3 */
+/* iPhone Retina */
+@media only screen and (min-width: 320px) {}
+
+/* EXTRA-small devices, phones */
+@media only screen and (min-width: 480px) {}
+
+/* SMALL devices, tablets */
+@media only screen and (min-width: 768px) {}
+
+/* MEDIUM devices, desktops */
+@media only screen and (min-width: 992px) {}
+
+/* LARGE devices, widescreens */
+@media only screen and (min-width: 1200px) {}
