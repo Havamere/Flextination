@@ -37,16 +37,25 @@ body {
   to { background-position-x: 400px; }
 }
 
-    /* Content of Webpage */
-#travel{
+    /* Content of Webpages */
+
+    /* Landing Page */
+#travel {
     color: silver;
 }
 
-.jumbotron{
+.jumbotron {
     margin-top: 2px;
     z-index: 0;
-    background-color: rgba(255, 255, 255, .0)
+    background-color: rgba(255, 255, 255, .0);
 }
+
+    /* Info Page */
+
+#weather {
+
+}
+
 
   /*Footer*/
 .footer {
