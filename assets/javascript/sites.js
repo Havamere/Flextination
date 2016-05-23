@@ -38,9 +38,9 @@ function performSearch() {
         limit: 5,
 
     };
-   
-        service.radarSearch(request, callback);
-   
+
+    service.radarSearch(request, callback);
+
 }
 
 function callback(results, status) {
@@ -55,26 +55,17 @@ function callback(results, status) {
     //     addMarker(result);
     // }
 
-markerArr.forEach(function(marker) {
-      marker.setMap(null);
-    });
-    markerArr = [];
 
-
-    if (status == google.maps.places.PlacesServiceStatus.OK) 
-    {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
         //initialize();
-      //  iterator = 0;
+        //  iterator = 0;
         markerArr = [];
-        for (var i = 0; i < 5; i++) 
-        {
+        for (var i = 0; i < 5; i++) {
             markerArr.push(results[i].geometry.location);
             result = results[i];
             addMarker(results[i]);
         }
-    }
-    else
-    {
+    } else {
         alert("Sorry, there are no locations in your area");
     }
 
@@ -105,3 +96,19 @@ function addMarker(place) {
         });
     });
 }
+
+
+function addResults(place) {
+    google.maps.event.addListener(marker, 'click', function() {
+                service.getDetails(place, function(result, status) {
+                    console.log(result);
+                    if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                        console.error(status);
+                        return;
+                    }
+                    infoWindow.setContent("<strong>name: </strong>" + result.name + "<p>" + "<strong>address:  </strong>" + result.formatted_address + "<p>" + "<strong>phone number:  </strong>" + result.formatted_phone_number + "<p>" + "<strong>rating: </strong>" + result.rating + "<p>");
+
+                    infoWindow.open(map, marker);
+                });
+            })
+          }
