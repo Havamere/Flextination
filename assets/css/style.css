@@ -18,6 +18,9 @@
     margin: 0 auto;
     clear: both;
 }
+#weatherHeader {
+  font-family: 'Trade Winds', cursive !important;
+}
   /*Footer*/
 footer {
     position: fixed;
