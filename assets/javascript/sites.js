@@ -124,6 +124,42 @@ function initMap() {
     infoWindow = new google.maps.InfoWindow();
     service = new google.maps.places.PlacesService(map);
 
+    // The idle event is a debounced event, so we can query & listen without
+    // throwing too many requests at the server.
+    map.addListener('idle', performSearch);
+}
+
+function performSearch() {
+    var request = {
+        bounds: map.getBounds(),
+        keyword: 'pizza',
+        limit: 5,
+
+    };
+
+    service.radarSearch(request, callback);
+
+}
+
+function callback(results, status) {
+
+
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+        markerArr = [];
+        for (var i = 0; i < 5; i++) {
+            markerArr.push(results[i].geometry.location);
+            result = results[i];
+            addMarker(results[i]);
+        }
+    } else {
+        alert("Sorry, there are no locations in your area");
+    }
+
+}
+
+function addMarker(place) {
+
+=======
          // Try to get user physical location
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
@@ -256,6 +292,7 @@ function callback(results, status) {
 
 //Function that adds markers
 function addMarker(place) {
+>>>>>>> master
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location,
@@ -275,9 +312,25 @@ function addMarker(place) {
                 console.error(status);
                 return;
             }
-            infoWindow.setContent(result.name + " " + result.formatted_phone_number);
-            //infoWindow.setContent(result.formatted_phone_number);
+            infoWindow.setContent("<strong>name: </strong>" + result.name + "<p>" + "<strong>address:  </strong>" + result.formatted_address + "<p>" + "<strong>phone number:  </strong>" + result.formatted_phone_number + "<p>" + "<strong>rating: </strong>" + result.rating + "<p>");
+
             infoWindow.open(map, marker);
         });
     });
 }
+
+
+function addResults(place) {
+    google.maps.event.addListener(marker, 'click', function() {
+                service.getDetails(place, function(result, status) {
+                    console.log(result);
+                    if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                        console.error(status);
+                        return;
+                    }
+                    infoWindow.setContent("<strong>name: </strong>" + result.name + "<p>" + "<strong>address:  </strong>" + result.formatted_address + "<p>" + "<strong>phone number:  </strong>" + result.formatted_phone_number + "<p>" + "<strong>rating: </strong>" + result.rating + "<p>");
+
+                    infoWindow.open(map, marker);
+                });
+            })
+          }
