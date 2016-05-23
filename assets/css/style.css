@@ -56,7 +56,9 @@ body {
 
 }
 
-
+#weatherHeader {
+  font-family: 'Trade Winds', cursive !important;
+}
   /*Footer*/
 .footer {
     position: fixed;
@@ -193,3 +195,4 @@ body {
         margin-top: 300px;
     }    
 }
+
