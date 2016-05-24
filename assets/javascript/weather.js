@@ -2,7 +2,7 @@
 (function() {
   'use strict';
 
-  var destinationCity = 'London';
+  var destinationCity = 'Orlando';
   var weatherAPIkey = "524901&APPID=49d879c3e237943a90e1e4d5e68e9770";
   var queryURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destinationCity + "&units=imperial&cnt=16?id=" + weatherAPIkey;
 
@@ -19,11 +19,12 @@
           data: "json"
         })
         .done(function(response) {
-          $('#destinationWeatherContent').append('<p>weather-description = ' + response.list[0].weather[0].description + '</p>');
-          $('#destinationWeatherContent').append('<p>humidity = ' + response.list[0].humidity + '%</p>');
-          $('#destinationWeatherContent').append('<p>pressure = ' + response.list[0].pressure + '</p>');
-          $('#destinationWeatherContent').append('<p>rain = ' + response.list[0].rain + '</p>');
-          $('#destinationWeatherContent').append('<p>windspeed = ' + response.list[0].speed + 'mph</p>');
+          $('#destinationWeatherContent').append('<img>' + response.list[0].weather[0].icon);
+          $('#destinationWeatherContent').append('<li>weather-description = ' + response.list[0].weather[0].description + '</li>');
+          $('#destinationWeatherContent').append('<li>humidity = ' + response.list[0].humidity + '%</li>');
+          $('#destinationWeatherContent').append('<li>pressure = ' + response.list[0].pressure + '</li>');
+          $('#destinationWeatherContent').append('<li>rain = ' + response.list[0].rain + '</li>');
+          $('#destinationWeatherContent').append('<li>windspeed = ' + response.list[0].speed + 'mph</li>');
 
           var time;
           var UNIX_timestamp = response.list[0].dt;
