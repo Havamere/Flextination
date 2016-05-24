@@ -5,6 +5,7 @@ var infoWindow;
 var service;
 var markers = [];
 //Initialize the map
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
