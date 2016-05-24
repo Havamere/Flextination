@@ -52,8 +52,16 @@ body {
 
     /* Info Page */
 
-#weather {
+#info-page {
+    background-image: url(../images/fresh_snow.png)
+}
 
+#map {
+
+}
+
+#destinationWeatherContent {
+    background-image: url(../images/weather.png)
 }
 
 #weatherHeader {

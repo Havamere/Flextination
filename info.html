@@ -9,31 +9,44 @@
 	<script type="text/javascript" src="assets/Bootstrap/bootstrap-3.3.6-dist/js/bootstrap.datetimepicker.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
 	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body id="info-page">
-	<header>
-    <form role="form">
-
-    <input class="form-control" type="text" id="pac-input" placeholder="Search Google Maps">
-    
-    </form>
-    </header>
 	<div class="row">
-		<div id="weather" class="col-xs-12">
+		<div id="weather">
 			<h2 id="weatherHeader">Flextination weather analysis:</h2>
-		<div id="destinationWeatherContent"></div>
+			<div id="destinationWeatherContent"  class="col-xs-12"></div>
 		</div>
 	</div>
 	<div class="row">
-		<div id="search-parameters" class="col-xs-12 col-md-2 destination"></div>
-		<div class="col-xs-12 col-md-10 map">
-			<div id="map">maps</div>
-            <div id="mapResults"></div> 
+		<div id="search-parameters" class="col-xs-5 col-sm-offset-1 destination">
+			This is the City and Dates you have selected
 		</div>
+		<div id="drop-down" class="col-xs-2  col-sm-offset-2 dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				Destinations per Weather
+			    <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+			    <li value="'Shopping Mall'">Shopping Mall</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-9 map">
+			<div id="map">maps</div>
+		</div>
+		<div class="col-xs-12 col-md-3">
+            <div id="mapResults">results</div> 
+		</div>
+	</div>
+	<div class="row">
+		<div id="itinerary" class="col-xs-12">Itinerary</div>
+			<div class="row">
+				<div class="col-xs-4">Day/Weather</div>
+				<div class="col-xs-8">Thing To Do</div>
+			</div>
 	</div>
 	<div id="selection">
 
@@ -46,25 +59,8 @@
             <button class="btn-primary pass">Casino</button>
             <button class="btn-primary pass">Art Gallery</button>
             <button class="btn-primary pass">Zoo</button>
-            <button class="btn-primary pass">Museum</button>
-            
-
-
-
-
-                <!-- <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Recreational Activites
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                <li><a href="#">Movie Theater</a></li>
-                <li><a href="#">Casino</a></li>
-                <li><a href="#">Night Club</a></li>
-                </ul>
-                </div>
- -->
-               
-
-            </div>
+            <button class="btn-primary pass">Museum</button>      
+    </div>
 	<div class="push"></div>
 	<footer class="footer">
 		<p id="copyright">&copy;Copyright 2016 Team 8</p>
