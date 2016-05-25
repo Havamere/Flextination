@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGbLaGsRnpqv8rORu25GIJ5Xs_NzU0xR0&callback=initMap&libraries=places,visualization" async defer></script>
+    <script type="text/javascript" src="assets/javascript/sites.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGbLaGsRnpqv8rORu25GIJ5Xs_NzU0xR0&callback=initAutocomplete&libraries=places" async defer></script>
+<!--     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete"
+        async defer></script> -->
+
 </head>
 <body id="landing-page">
 	<div id="main-content" class="col-xs-12">
@@ -47,9 +51,10 @@
 					    <div class='col-md-10 col-md-offset-1'>
 					        <div class="form-group">
 					            <div class='input-group destination' id='destination'>
-					                <input type="text" class="form-control" placeholder="Destination" aria-describedby="basic-addon1">
+					                <input id="autocomplete" placeholder="Enter your address"
+             onFocus="geolocate()" type="text"></input>
 					                <span class="input-group-addon">
-					                    <span class="glyphicon glyphicon-map-marker"></span>
+					                    <button type="button" id ="next" class="btn btn-primary glyphicon glyphicon-map-marker"></button>
 					                </span>
 					            </div>
 					        </div>
@@ -68,7 +73,7 @@
 	</div>
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
 	<script type="text/javascript" src="assets/javascript/flights.js"></script>
-	<script type="text/javascript" src="assets/javascript/sites.js"></script>
+	
 	<script type="text/javascript" src="assets/javascript/weather.js"></script>
 </body>
 </html>
