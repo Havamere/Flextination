@@ -32,7 +32,9 @@ body {
     background-size: cover;
 }
 #map {
-        height: 400px;
+        height: 200px;
+        margin: 0 auto;
+        overflow: auto;
     }
 
 
