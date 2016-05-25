@@ -5,7 +5,7 @@
     clear: both;
 }
 
-body {
+#landing-page {
     text-align: center;
     background-image: url(../images/beautiful-blue-stars-fill.jpg)
 }
@@ -58,16 +58,22 @@ body {
 
 #map {
     height: 500px;
+    width: 900px;
 }
 
 #destinationWeatherContent {
-    background-image: url(../images/weather.png)
+    background-image: url(../images/weather.png);
 }
 
 #weatherHeader {
   font-family: 'Trade Winds', cursive !important;
+  text-align: center;
 }
+
+#itinerary {
+    text-align: center;
   /*Footer*/
+}
 .footer {
     position: fixed;
     padding: 5px 0;
