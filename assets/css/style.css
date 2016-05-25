@@ -1,7 +1,7 @@
 /*Spacing Divs*/
 
 .push {
-    height: 10px;
+    height: 3em;
     clear: both;
 }
 
@@ -57,7 +57,7 @@ body {
 }
 
 #map {
-
+    height: 500px;
 }
 
 #destinationWeatherContent {
