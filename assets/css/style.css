@@ -63,6 +63,17 @@
 
 #destinationWeatherContainer {
     background-image: url(../images/weather.png);
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: auto;
+}
+#destinationWeatherContainer ul {
+  display: inline-block;
+  padding: 5px;
+  box-sizing: border-box;
+}
+#destinationWeatherContainer li {
+  list-style: none;
 }
 
 #weatherHeader {
