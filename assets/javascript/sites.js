@@ -4,7 +4,7 @@ var map;
 var infoWindow;
 var service;
 var markers = [];
-var latlong = {};
+var details = {};
 
 var autocomplete;
 
@@ -27,7 +27,8 @@ function fillInAddress() {
   var place = autocomplete.getPlace();
   console.log(place);
   latlong = {lat: place.geometry.location.lat(),
-             lng: place.geometry.location.lng()
+             lng: place.geometry.location.lng(),
+
          }
     console.log(latlong);  
 
