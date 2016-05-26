@@ -34,6 +34,9 @@
             $('#destinationWeatherContent' + i).append('<li>humidity = ' + response.list[i].main.humidity + '%</li>');
             $('#destinationWeatherContent' + i).append('<li>pressure = ' + response.list[i].main.pressure + '</li>');
             $('#destinationWeatherContent' + i).append('<li>windspeed = ' + response.list[i].wind.speed + 'mph</li>');
+            $('#destinationWeatherContent' + i).append('<input type="radio" name="weatherRadioButtons" value="' + response.list[i].weather[0].description + '" id="weatherRadioButton' + i + '" />').insertBefore('.owf-5x');
+
+
           } //END for-loop
 
           // var selectedStartDateTime = "05/25/2016 9:00";
