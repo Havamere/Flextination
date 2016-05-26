@@ -15,7 +15,7 @@
       method: 'GET'
     })
     .done(function(response) {
-      console.log(response);
+      //console.log(response);
 
       $.ajax({
           url: queryURL,
@@ -25,7 +25,7 @@
         .done(function(response) {
 
           for (var i = 0; i < response.list.length - 1; i++) {
-            console.log(response.list[i]);
+   //         console.log(response.list[i]);
             $('#destinationWeatherContainer').append('<ul id="destinationWeatherContent' + i + '">');
             $('#destinationWeatherContent' + i).append('<li>' + response.list[i].dt_txt + '</li>');
             $('#destinationWeatherContent' + i).append('<i class="owf owf-' + response.list[i].weather[0].id + ' owf-5x"></i>');
