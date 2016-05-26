@@ -12,6 +12,11 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script type="text/javascript" src="assets/javascript/sites.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGbLaGsRnpqv8rORu25GIJ5Xs_NzU0xR0&callback=initAutocomplete&libraries=places" async defer></script>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
 </head>
 <body id="landing-page">
 	<div id="main-content" class="col-xs-12">
@@ -48,9 +53,10 @@
 					    <div class='col-md-10 col-md-offset-1'>
 					        <div class="form-group">
 					            <div class='input-group destination' id='destination'>
-					                <input type="text" class="form-control" placeholder="Destination" aria-describedby="basic-addon1">
+					                <input id="autocomplete" placeholder="Enter your address"
+             onFocus="geolocate()" type="text"></input>
 					                <span class="input-group-addon">
-					                    <span class="glyphicon glyphicon-map-marker"></span>
+					                    <button type="button" id ="next" class="btn btn-primary glyphicon glyphicon-map-marker"></button>
 					                </span>
 					            </div>
 					        </div>
