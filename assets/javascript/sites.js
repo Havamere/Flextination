@@ -176,9 +176,6 @@ function newResults() {
                     console.error(status);
                     return;
                 }
-                if (result.rating < 4.5) {
-                    return;
-                }
                 $('#mapResults').append("<p><b>Name:</b>" + result.name + "<p><b>address:  </b>" + result.formatted_address + "<p><b>phone number:  </b>" + result.formatted_phone_number + "<p><b>rating: </b>" + result.rating);
 
                // infoWindow.open(map, marker);
