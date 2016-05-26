@@ -61,7 +61,7 @@
     width: 900px;
 }
 
-#destinationWeatherContent {
+#destinationWeatherContainer {
     background-image: url(../images/weather.png);
 }
 
@@ -207,6 +207,5 @@
 
     .jumbotron{
         margin-top: 300px;
-    }    
+    }
 }
-
