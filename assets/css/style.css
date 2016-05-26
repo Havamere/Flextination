@@ -58,11 +58,11 @@
 
 #map {
     height: 500px;
-    width: 900px;
 }
 
 #destinationWeatherContent {
     background-image: url(../images/weather.png);
+    overflow: scroll;
 }
 
 #weatherHeader {
@@ -70,10 +70,19 @@
   text-align: center;
 }
 
+.dropdown-menu {
+    margin-left: 14px;
+}
+
+.dropdown-menu li {
+    margin-left: 10px;
+}
+
 #itinerary {
     text-align: center;
-  /*Footer*/
 }
+  /*Footer*/
+
 .footer {
     position: fixed;
     padding: 5px 0;

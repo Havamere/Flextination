@@ -19,11 +19,21 @@
           data: "json"
         })
         .done(function(response) {
+          // var day = $('<div>');
+          // var weatherDescription = response.list[0].weather[0].description;
+          // var humidity = response.list[0].humidity;
+          // var pressure = response.list[0].pressure;
+          // var rain = response.list[0].rain;
+          // var speed = response.list[0].speed;
+          // day.addClass('day');
+          // day.attr('')
           $('#destinationWeatherContent').append('<p>weather-description = ' + response.list[0].weather[0].description + '</p>');
           $('#destinationWeatherContent').append('<p>humidity = ' + response.list[0].humidity + '%</p>');
           $('#destinationWeatherContent').append('<p>pressure = ' + response.list[0].pressure + '</p>');
           $('#destinationWeatherContent').append('<p>rain = ' + response.list[0].rain + '</p>');
           $('#destinationWeatherContent').append('<p>windspeed = ' + response.list[0].speed + 'mph</p>');
+          $('#destinationWeatherContent').append('<input type="radio" value='+0+'>');
+          // $('#destinationWeatherContent').append(day)
 
           var time;
           var UNIX_timestamp = response.list[0].dt;
