@@ -7,7 +7,8 @@
   var destinationLongitude = "87.65";
   var weatherAPIkey = "524901&APPID=49d879c3e237943a90e1e4d5e68e9770";
   // var queryURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destinationCity + "&units=imperial&cnt=16?id=" + weatherAPIkey;
-  var queryURL = "http://api.openweathermap.org/data/2.5/history/city?lat=" + destinationLatitude + "&lon=" + destinationLongitude + "&type=day&start=" + (moment()) + "&end=" + (moment().date() + 16) + "&units=imperial&cnt=16?id=" + weatherAPIkey;
+  var queryURL = "http://api.openweathermap.org/data/2.5/forecast/" + "city?lat=" + destinationLatitude + "&lon=" + destinationLongitude + "&units=imperial&start=" + "1369728000" + "&cnt=16?id=" + weatherAPIkey;
+  // var queryURL = "http://api.openweathermap.org/data/2.5/history/city?lat=" + destinationLatitude + "&lon=" + destinationLongitude + "&type=hour&start=" + "1369728000" + "&end=" + "1369789200" + "&units=imperial?id=" + weatherAPIkey;
 
 
   $.ajax({
@@ -23,19 +24,25 @@
           data: "json"
         })
         .done(function(response) {
-          $('#destinationWeatherContent').append('<img>' + response.list[0].weather[0].icon);
-          $('#destinationWeatherContent').append('<li>weather-description = ' + response.list[0].weather[0].description + '</li>');
-          $('#destinationWeatherContent').append('<li>humidity = ' + response.list[0].humidity + '%</li>');
-          $('#destinationWeatherContent').append('<li>pressure = ' + response.list[0].pressure + '</li>');
-          $('#destinationWeatherContent').append('<li>rain = ' + response.list[0].rain + '</li>');
-          $('#destinationWeatherContent').append('<li>windspeed = ' + response.list[0].speed + 'mph</li>');
 
-          var selectedStartDateTime = "05/25/2016 9:00";
-          var unixSelectedStartDateTime = moment(moment(selectedStartDateTime, "MM/DD/YYYY HH:mm").unix()*1000);
-          console.log(unixSelectedStartDateTime);
+          for (var i = 0; i < response.list.length-1; i++) {
+          console.log(response.list[i]);
+          $('#destinationWeatherContainer').append('<ul id="destinationWeatherContent' + i + '">');
+          $('#destinationWeatherContent'+i).append('<li>weather-description = ' + response.list[i].dt_txt + '</li>');
+          $('#destinationWeatherContent'+i).append('<img>' + response.list[i].weather[0].icon);
+          $('#destinationWeatherContent'+i).append('<li>weather-description = ' + response.list[i].weather[0].description + '</li>');
+          $('#destinationWeatherContent'+i).append('<li>humidity = ' + response.list[i].humidity + '%</li>');
+          $('#destinationWeatherContent'+i).append('<li>pressure = ' + response.list[i].pressure + '</li>');
+          $('#destinationWeatherContent'+i).append('<li>rain = ' + response.list[i].rain + '</li>');
+          $('#destinationWeatherContent'+i).append('<li>windspeed = ' + response.list[i].speed + 'mph</li>');
+        }
 
-          var now = moment();
-          var tooFar = (now+(moment().date() + 16));
+          // var selectedStartDateTime = "05/25/2016 9:00";
+          // var unixSelectedStartDateTime = moment(moment(selectedStartDateTime, "MM/DD/YYYY HH:mm").unix()*1000);
+          // console.log(unixSelectedStartDateTime);
+          //
+          // var now = moment();
+          // var tooFar = (now+(moment().date() + 16));
           // var tooFar = true
           // if ( >= unixSelectedStartDateTime) {
           //   var unixSelectedStartDateTime = historicalStartDateTime;
