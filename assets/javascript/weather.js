@@ -28,12 +28,12 @@
             console.log(response.list[i]);
             $('#destinationWeatherContainer').append('<ul id="destinationWeatherContent' + i + '">');
             $('#destinationWeatherContent' + i).append('<li>' + response.list[i].dt_txt + '</li>');
-            $('#destinationWeatherContent' + i).append('<img>' + response.list[i].weather[0].icon);
+            $('#destinationWeatherContent' + i).append('<i class="owf owf-' + response.list[i].weather[0].id + ' owf-5x"></i>');
             $('#destinationWeatherContent' + i).append('<li>weather-description = ' + response.list[i].weather[0].description + '</li>');
-            $('#destinationWeatherContent' + i).append('<li>humidity = ' + response.list[i].humidity + '%</li>');
-            $('#destinationWeatherContent' + i).append('<li>pressure = ' + response.list[i].pressure + '</li>');
-            $('#destinationWeatherContent' + i).append('<li>rain = ' + response.list[i].rain + '</li>');
-            $('#destinationWeatherContent' + i).append('<li>windspeed = ' + response.list[i].speed + 'mph</li>');
+            $('#destinationWeatherContent' + i).append('<li>temperature = ' + response.list[i].main.temp + 'ºF</li>');
+            $('#destinationWeatherContent' + i).append('<li>humidity = ' + response.list[i].main.humidity + '%</li>');
+            $('#destinationWeatherContent' + i).append('<li>pressure = ' + response.list[i].main.pressure + '</li>');
+            $('#destinationWeatherContent' + i).append('<li>windspeed = ' + response.list[i].wind.speed + 'mph</li>');
           } //END for-loop
 
           // var selectedStartDateTime = "05/25/2016 9:00";
