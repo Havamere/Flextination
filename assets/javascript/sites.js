@@ -175,18 +175,16 @@ function newResults() {
                 return;
             }
 
-            // $('#mapResults').append("<div class='col-xs-12 result'>" +
-            //     "<p><b>Name:</b>" + result.name +
-            //     "<p><b>address:  </b>" + result.formatted_address +
-            //     "<p><b>phone number:  </b>" + result.formatted_phone_number +
-            //     "<p><b>rating: </b>" + result.rating +
-            //     "</div>");
-
-            // infoWindow.open(map, marker);
-
-
-            var btnHTML = '<button type="button" id = "itin" class="btn btn-default" data-name = result.name data-add = result.formatted_address>Add to Itinerary</button>'
-            $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p>" + btnHTML + "</li>");
+            var b = $('<button>');
+                b.addClass('btn btn-default addToItin')
+                b.text('Add To Itinerary');
+                b.attr('data-name', result.name);
+                b.attr('data-addr', result.formatted_address);
+                b.attr('data-phone', result.formatted_phone_number);
+                b.attr('data-rating', result.rating);
+    
+            $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p></li>");
+            $('#list2').append(b);
 
         });
 
@@ -221,7 +219,23 @@ function newResults() {
 }
 
 function addToItin() {
-    console.log("I was added to the Itinerary");
+    console.log('inside addToItin function');
+    var name = $(this).attr('data-name');
+    var address = $(this).attr('data-addr');
+    var rating = $(this).attr('data-rating');
+    var phone = $(this).attr('data-phone');
+
+    var itineraryDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value*/
+        //console.log(itineraryDate);
+    var itineraryWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
+        //console.log(itineraryWeather);
+
+    console.log('name: ' + name);
+    console.log('address: ' + address);
+    console.log('rating: ' + rating);
+    console.log('phone: ' + phone);
+    console.log('itineraryDate: ' + itineraryDate);
+    console.log('itineraryWeather: ' + itineraryWeather);
 
 }
 
@@ -230,4 +244,4 @@ $(document).on('click', '#next', moveToInfo);
 //When one of the options from the dropdown menu is clicked, run the function that displays the results
 $(document).on('click', '.dropdown-menu li', newResults);
 
-$(document).on('click', '#itin', addToItin);
+$(document).on('click', '.addToItin', addToItin);
