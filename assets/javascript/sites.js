@@ -172,7 +172,9 @@ function newResults() {
                     console.error(status);
                     return;
                 }
-                $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p></li>");
+
+                var btnHTML = '<button type="button" class="btn btn-default">Add to Itinerary</button>'
+                $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p>" + btnHTML + "</li>");
 
             });
 
