@@ -7,6 +7,7 @@ var markers = [];
 var latlong = {};
 var haightAshbury = {};
 var autocomplete;
+var markerArr = [];
 
 function initAutocomplete() {
 
@@ -25,12 +26,15 @@ function initAutocomplete() {
 function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
-    console.log(place);
     lat = place.geometry.location.lat();
-    long = place.geometry.location.lng()
-
+    long = place.geometry.location.lng();
+    address = place.formatted_address;
+    console.log(lat)
+    console.log(long)
     localStorage.setItem('lat', lat);
     localStorage.setItem('long', long);
+    localStorage.setItem('address', address);
+
 
 }
 
@@ -74,7 +78,11 @@ function initMap() {
     });
 
     // Adds a marker at the center of the map.
-    addMarker(haightAshbury);
+    var centerMarker = new google.maps.Marker({
+    position: haightAshbury,
+    icon: 'assets/images/center.png',
+    map: map
+  });
 }
 
 // Adds a marker to the map and push to the array.
@@ -84,6 +92,7 @@ function addMarker(location) {
         map: map
     });
     markers.push(marker);
+    console.log(markers);
 }
 
 // Sets the map on all markers in the array.
@@ -97,17 +106,17 @@ function setMapOnAll(map) {
 function clearMarkers() {
     setMapOnAll(null);
 }
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+}
 
 // Shows any markers currently in the array.
 function showMarkers() {
     setMapOnAll(map);
 }
 
-// Deletes all markers in the array by removing references to them.
-function deleteMarkers() {
-    clearMarkers();
-    markers = [];
-}
 
 
 // function addResults(place) {
@@ -130,18 +139,28 @@ function moveToInfo() {
     initMap();
 }
 
-function newResults() {
-    clearMarkers();
-    deleteMarkers();
 
+function newResults() {
+    console.log(typeof(markerArr));
+    console.log(markerArr);
+
+    //Remove the old results and add the new results
+    $("#mapResults").empty(); 
+   
+   //If markerArr
+   if (markerArr) {  
+    for (var i=0; i < markerArr.length; i++) {
+    markerArr[i].setMap(null);
+}
+}
     infoWindow = new google.maps.InfoWindow();
     service = new google.maps.places.PlacesService(map);
 
-    var type = $(this).val().trim();;
-    console.log(type);
+    var type = $(this).text();
     var request = {
         bounds: map.getBounds(),
         keyword: type,
+        rankBy: google.maps.places.RankBy.PROMINENCE,
         limit: 5,
 
     };
@@ -151,14 +170,12 @@ function newResults() {
 
 
     function callback(results, status) {
-
+    console.log(results)
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             //initialize();
             //  iterator = 0;
             markerArr = [];
             for (var i = 0; i < 5; i++) {
-                markerArr.push(results[i].geometry.location);
-                result = results[i];
                 addMarker(results[i]);
                 addResults(results[i]);
             }
@@ -171,12 +188,12 @@ function newResults() {
 
 
             service.getDetails(place, function(result, status) {
-                console.log(result);
+                // console.log(result);
                 if (status !== google.maps.places.PlacesServiceStatus.OK) {
                     console.error(status);
                     return;
                 }
-                $('#mapResults').append("<p><b>Name:</b>" + result.name + "<p><b>address:  </b>" + result.formatted_address + "<p><b>phone number:  </b>" + result.formatted_phone_number + "<p><b>rating: </b>" + result.rating);
+                $('#mapResults').append("<p><b>Name:</b>" + result.name + "<p><b>Address:  </b>" + result.formatted_address + "<p><b>Phone number:  </b>" + result.formatted_phone_number + "<p><b>Rating: </b>" + result.rating);
 
                // infoWindow.open(map, marker);
 
@@ -188,7 +205,8 @@ function newResults() {
         // addResults(place, marker);
     }
     function addMarker(place) {
-
+           // console.log(place)
+            // markerArr.setMap(null);
         var marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location,
@@ -199,6 +217,8 @@ function newResults() {
             // }
 
         });
+                markerArr.push(marker);
+                console.log(markerArr);
 
         google.maps.event.addListener(marker, 'click', function() {
             service.getDetails(place, function(result, status) {
@@ -273,4 +293,5 @@ function newResults() {
 
 $(document).on('click', '#next', moveToInfo);
 
-$(document).on('click', '.pass', newResults);
+//When one of the options from the dropdown menu is clicked, run the function that displays the results
+$(document).on('click', '.dropdown-menu li', newResults);

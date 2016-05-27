@@ -1,10 +1,13 @@
 /* Flextination weather */
 (function() {
   'use strict';
-
-  var destinationCity = 'Orlando';
-  var destinationLatitude = "41.85";
-  var destinationLongitude = "87.65";
+var destinationCity = localStorage.getItem('address');
+var destinationLatitude = parseFloat(localStorage.getItem('lat'));
+var destinationLongitude = parseFloat(localStorage.getItem('long'));
+  
+  // var destinationLatitude = "41.85";
+  // var destinationLongitude = "87.65";
+  
   var weatherAPIkey = "524901&APPID=49d879c3e237943a90e1e4d5e68e9770";
   // var queryURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destinationCity + "&units=imperial&cnt=16?id=" + weatherAPIkey;
   // var queryURL = "http://api.openweathermap.org/data/2.5/history/city?lat=" + destinationLatitude + "&lon=" + destinationLongitude + "&type=hour&start=" + "1369728000" + "&end=" + "1369789200" + "&units=imperial?id=" + weatherAPIkey;
