@@ -177,15 +177,10 @@ function newResults() {
                     return;
                 }
                 $('#mapResults').append("<div class='col-xs-12 result'>"+
-                                        "<div class='col-xs-1'>"+
-                                        "<input type='radio' value="+"\""+result.name+"\""+">"+
-                                        "</div>"+
-                                        "<div class='col-xs-10'>"+
                                         "<p><b>Name:</b>" + result.name + 
                                         "<p><b>address:  </b>" + result.formatted_address + 
                                         "<p><b>phone number:  </b>" + result.formatted_phone_number + 
                                         "<p><b>rating: </b>" + result.rating +
-                                        "</div>"+
                                         "</div>");
 
                // infoWindow.open(map, marker);

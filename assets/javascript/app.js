@@ -39,7 +39,7 @@ $('#add-to').on('click', function(){
         //console.log(itineraryDate);
     var itineraryWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
         //console.log(itineraryWeather);
-    var itineraryActivity = $('.result:checked').val();/*selector for checkbox of activities*/
+    var itineraryActivity = $('.resultbuttons:checked').val();/*selector for checkbox of activities*/
         console.log(itineraryActivity);
     $.each(planner, function(element){
         if (itineraryDate == element.date) {
