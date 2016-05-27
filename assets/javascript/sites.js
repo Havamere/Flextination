@@ -115,22 +115,6 @@ function showMarkers() {
 }
 
 
-
-// function addResults(place) {
-//     google.maps.event.addListener(marker, 'click', function() {
-//         service.getDetails(place, function(result, status) {
-//             console.log(result);
-//             if (status !== google.maps.places.PlacesServiceStatus.OK) {
-//                 console.error(status);
-//                 return;
-//             }
-//             infoWindow.setContent("<strong>name: </strong>" + result.name + "<p>" + "<strong>address:  </strong>" + result.formatted_address + "<p>" + "<strong>phone number:  </strong>" + result.formatted_phone_number + "<p>" + "<strong>rating: </strong>" + result.rating + "<p>");
-
-//             infoWindow.open(map, marker);
-//         });
-//     })
-// }
-
 function moveToInfo() {
     window.location.href = 'info.html';
     initMap();
@@ -168,8 +152,7 @@ function newResults() {
     function callback(results, status) {
     console.log(results)
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            //initialize();
-            //  iterator = 0;
+
             markerArr = [];
             for (var i = 0; i < 5; i++) {
                 addMarker(results[i]);
@@ -184,33 +167,21 @@ function newResults() {
 
 
             service.getDetails(place, function(result, status) {
-                // console.log(result);
+        
                 if (status !== google.maps.places.PlacesServiceStatus.OK) {
                     console.error(status);
                     return;
                 }
                 $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p></li>");
 
-               // infoWindow.open(map, marker);
-
-
-
             });
 
-
-        // addResults(place, marker);
     }
     function addMarker(place) {
-           // console.log(place)
-            // markerArr.setMap(null);
+
         var marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location,
-            // icon: {
-            //     url: 'http://maps.gstatic.com/mapfiles/circle.png',
-            //     anchor: new google.maps.Point(10, 10),
-            //     scaledSize: new google.maps.Size(10, 17)
-            // }
 
         });
                 markerArr.push(marker);
@@ -226,66 +197,13 @@ function newResults() {
                 infoWindow.setContent("<p><b>Name:</b>" + result.name + "<p><b>address:  </b>" + result.formatted_address + "<p><b>phone number:  </b>" + result.formatted_phone_number + "<p><b>rating: </b>" + result.rating);
 
                 infoWindow.open(map, marker);
-
-
-
             });
 
         });
-        // addResults(place, marker);
+
     }
-
-
-    // function addResults(place, marker) {
-    //     google.maps.event.addListener(marker, 'click', function() {
-    //         service.getDetails(place, function(result, status) {
-    //             console.log(result);
-    //             if (status !== google.maps.places.PlacesServiceStatus.OK) {
-    //                 console.error(status);
-    //                 return;
-    //             }
-    //             infoWindow.setContent("<strong>name: </strong>" + result.name + "<p>" + "<strong>address:  </strong>" + result.formatted_address + "<p>" + "<strong>phone number:  </strong>" + result.formatted_phone_number + "<p>" + "<strong>rating: </strong>" + result.rating + "<p>");
-
-    //             infoWindow.open(map, marker);
-    //         });
-    //     })
-    // }
+  
 }
-//     console.log('sup');
-//     console.log($(this).val());
-//     type = $(this).val();
-
-
-//   infowindow = new google.maps.InfoWindow();
-//   var service = new google.maps.places.PlacesService(map);
-//   service.nearbySearch({
-//     location: haightAshbury,
-//     radius: 1500,
-//     type: type,
-//   }, callback);
-// }
-
-// function callback(results, status) {
-//   if (status === google.maps.places.PlacesServiceStatus.OK) {
-//     for (var i = 0; i < results.length; i++) {
-//       createMarker(results[i]);
-//       //console.log(results[i]);
-//     }
-//   }
-// }
-
-// function createMarker(place) {
-//   var placeLoc = place.geometry.location;
-//   var marker = new google.maps.Marker({
-//     map: map,
-//     position: place.geometry.location
-//   });
-
-//   google.maps.event.addListener(marker, 'click', function() {
-//     infowindow.setContent("<p><b>Name:</b>" + place.name + "<p><b>address:  </b>" + place.formatted_address + "<p><b>phone number:  </b>" + place.formatted_phone_number + "<p><b>rating: </b>" + place.rating);
-//     infowindow.open(map, this);
-//   });
-// }
 
 $(document).on('click', '#next', moveToInfo);
 
