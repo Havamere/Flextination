@@ -175,12 +175,12 @@ function newResults() {
                 return;
             }
 
-            $('#mapResults').append("<div class='col-xs-12 result'>" +
-                "<p><b>Name:</b>" + result.name +
-                "<p><b>address:  </b>" + result.formatted_address +
-                "<p><b>phone number:  </b>" + result.formatted_phone_number +
-                "<p><b>rating: </b>" + result.rating +
-                "</div>");
+            // $('#mapResults').append("<div class='col-xs-12 result'>" +
+            //     "<p><b>Name:</b>" + result.name +
+            //     "<p><b>address:  </b>" + result.formatted_address +
+            //     "<p><b>phone number:  </b>" + result.formatted_phone_number +
+            //     "<p><b>rating: </b>" + result.rating +
+            //     "</div>");
 
             // infoWindow.open(map, marker);
 
