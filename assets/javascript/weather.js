@@ -24,8 +24,12 @@
         })
         .done(function(response) {
 
+          var buildDate = moment().year(response.list[0].dt_txt).month(response.list[0].dt_txt).date(response.list[0].dt_txt);
+
+          console.log(buildDate);
+
           for (var i = 0; i < response.list.length - 1; i++) {
-   //         console.log(response.list[i]);
+            console.log(response);
             $('#destinationWeatherContainer').append('<ul id="destinationWeatherContent' + i + '">');
             $('#destinationWeatherContent' + i).append('<li>' + response.list[i].dt_txt + '</li>');
             $('#destinationWeatherContent' + i).append('<i class="owf owf-' + response.list[i].weather[0].id + ' owf-5x"></i>');
@@ -35,7 +39,7 @@
             $('#destinationWeatherContent' + i).append('<li>humidity = ' + response.list[i].main.humidity + '%</li>');
             $('#destinationWeatherContent' + i).append('<li>pressure = ' + response.list[i].main.pressure + '</li>');
             $('#destinationWeatherContent' + i).append('<li>windspeed = ' + response.list[i].wind.speed + 'mph</li>');
-            $('#destinationWeatherContent' + i).append('<input type="radio" name="weatherRadioButtons" value="' + response.list[i].weather[0].description + '" id="weatherRadioButton' + i + '" />').insertBefore('.owf-5x');
+            
 
 
           } //END for-loop

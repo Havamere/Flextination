@@ -176,7 +176,17 @@ function newResults() {
                     console.error(status);
                     return;
                 }
-                $('#mapResults').append("<p><b>Name:</b>" + result.name + "<p><b>address:  </b>" + result.formatted_address + "<p><b>phone number:  </b>" + result.formatted_phone_number + "<p><b>rating: </b>" + result.rating);
+                $('#mapResults').append("<div class='col-xs-12 result'>"+
+                                        "<div class='col-xs-1'>"+
+                                        "<input type='checkbox'>"+
+                                        "</div>"+
+                                        "<div class='col-xs-10'>"+
+                                        "<p><b>Name:</b>" + result.name + 
+                                        "<p><b>address:  </b>" + result.formatted_address + 
+                                        "<p><b>phone number:  </b>" + result.formatted_phone_number + 
+                                        "<p><b>rating: </b>" + result.rating +
+                                        "</div>"+
+                                        "</div>");
 
                // infoWindow.open(map, marker);
 
