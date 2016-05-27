@@ -99,7 +99,7 @@
  }
 
 #mapResults ol li p { 
-   /* padding:-2px; */
+    padding: 4px; 
     font-style:normal; 
     font-family:Arial; 
     font-size:13px; 
