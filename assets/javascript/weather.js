@@ -15,20 +15,12 @@ var destinationLongitude = parseFloat(localStorage.getItem('long'));
 
   $.ajax({
       url: queryURL,
-      method: 'GET'
+      method: 'GET',
+      data: "json"
     })
     .done(function(response) {
-      //console.log(response);
-
-      $.ajax({
-          url: queryURL,
-          method: 'GET',
-          data: "json"
-        })
-        .done(function(response) {
-
-          for (var i = 0; i < response.list.length - 1; i++) {
-   //         console.log(response.list[i]);
+      console.log(response);
+        for (var i = 0; i < response.list.length - 1; i++) {
             $('#destinationWeatherContainer').append('<ul id="destinationWeatherContent' + i + '">');
             $('#destinationWeatherContent' + i).append('<li>' + response.list[i].dt_txt + '</li>');
             $('#destinationWeatherContent' + i).append('<i class="owf owf-' + response.list[i].weather[0].id + ' owf-5x"></i>');
@@ -39,44 +31,8 @@ var destinationLongitude = parseFloat(localStorage.getItem('long'));
             $('#destinationWeatherContent' + i).append('<li>pressure = ' + response.list[i].main.pressure + '</li>');
             $('#destinationWeatherContent' + i).append('<li>windspeed = ' + response.list[i].wind.speed + 'mph</li>');
           } //END for-loop
-
-          // var selectedStartDateTime = "05/25/2016 9:00";
-          // var unixSelectedStartDateTime = moment(moment(selectedStartDateTime, "MM/DD/YYYY HH:mm").unix()*1000);
-          // console.log(unixSelectedStartDateTime);
-          //
-          // var now = moment();
-          // var tooFar = (now+(moment().date() + 16));
-          // var tooFar = true
-          // if ( >= unixSelectedStartDateTime) {
-          //   var unixSelectedStartDateTime = historicalStartDateTime;
-          //   var historicalStartDateTime = moment.unix(historicalStartDateTime);
-          //   var m = moment(historicalStartDateTime);
-          //   var s = m.format("M/D/YYYY H:mm");
-          //   console.log(s);
-          // } else {
-          //   return;
-          // }
-
-
-          /*
-                    var time;
-                    var UNIX_timestamp = response.list[0].dt;
-                    function timeConverter(UNIX_timestamp) {
-                      var a = new Date(UNIX_timestamp * 1000);
-                      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                      var year = a.getFullYear();
-                      var month = months[a.getMonth()];
-                      var date = a.getDate();
-                      var hour = a.getHours();
-                      var min = a.getMinutes();
-                      var sec = a.getSeconds();
-                      var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
-                      return time;
-                    }
-                    $('#destinationWeatherContent').append('<p>time of day forecasted = ' + time + '</p>');
-          */
+    
 
         }); //END JSON to HTML response function
-    }); //END AJAX API response function
 
 })(window); //END IIFE
