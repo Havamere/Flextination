@@ -173,7 +173,7 @@ function newResults() {
                     return;
                 }
 
-                var btnHTML = '<button type="button" class="btn btn-default">Add to Itinerary</button>'
+                var btnHTML = '<button type="button" id = "itin" class="btn btn-default" data-name = result.name data-add = result.formatted_address>Add to Itinerary</button>'
                 $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p>" + btnHTML + "</li>");
 
             });
@@ -207,7 +207,14 @@ function newResults() {
   
 }
 
+function addToItin(){
+    console.log("I was added to the Itinerary");
+
+}
+
 $(document).on('click', '#next', moveToInfo);
 
 //When one of the options from the dropdown menu is clicked, run the function that displays the results
 $(document).on('click', '.dropdown-menu li', newResults);
+
+$(document).on('click', '#itin', addToItin);
