@@ -60,6 +60,10 @@
     height: 500px;
 }
 
+.btn {
+    margin: 4px;
+}
+
 #destinationWeatherContainer {
     background-image: url(../images/weather.png);
     white-space: nowrap;

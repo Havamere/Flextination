@@ -25,7 +25,7 @@ function initAutocomplete() {
 function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
-    console.log(place);
+    //console.log(place);
     lat = place.geometry.location.lat();
     long = place.geometry.location.lng()
 
@@ -58,7 +58,7 @@ function initMap() {
     var long = parseFloat(localStorage.getItem('long'));
 
     haightAshbury = { lat: lat, lng: long };
-    console.log(haightAshbury);
+    //console.log(haightAshbury);
     // console.log(lat, long);
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -138,7 +138,7 @@ function newResults() {
     service = new google.maps.places.PlacesService(map);
 
     var type = $(this).val().trim();;
-    console.log(type);
+    //console.log(type);
     var request = {
         bounds: map.getBounds(),
         keyword: type,
@@ -171,14 +171,14 @@ function newResults() {
 
 
             service.getDetails(place, function(result, status) {
-                console.log(result);
+                // console.log(result);
                 if (status !== google.maps.places.PlacesServiceStatus.OK) {
                     console.error(status);
                     return;
                 }
                 $('#mapResults').append("<div class='col-xs-12 result'>"+
                                         "<div class='col-xs-1'>"+
-                                        "<input type='checkbox'>"+
+                                        "<input type='radio' value="+"\""+result.name+"\""+">"+
                                         "</div>"+
                                         "<div class='col-xs-10'>"+
                                         "<p><b>Name:</b>" + result.name + 
@@ -212,7 +212,7 @@ function newResults() {
 
         google.maps.event.addListener(marker, 'click', function() {
             service.getDetails(place, function(result, status) {
-                console.log(result);
+               // console.log(result);
                 if (status !== google.maps.places.PlacesServiceStatus.OK) {
                     console.error(status);
                     return;

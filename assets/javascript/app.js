@@ -24,6 +24,7 @@ $('.dropdown-toggle').dropdown();
 */
 
 /*
+    $('#question'+e+':checked').val()
     planner = [day1,day2,day3]
     planner = [
         {date: '15/10/2010', weather: '800', activities: ["biking","hiking","sun bathing"]},
@@ -34,9 +35,12 @@ $('.dropdown-toggle').dropdown();
 var planner = [];
 
 $('#add-to').on('click', function(){
-    var itineraryDate = ""/*selector for radio button date value (see trivia homework)*/;
-    var itineraryWeather = ""/*selector for radio button weather value*/;
-    var itineraryActivity = ""/*selector for checkbox of activities*/;
+    var itineraryDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value (see trivia homework)*/
+        //console.log(itineraryDate);
+    var itineraryWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
+        //console.log(itineraryWeather);
+    var itineraryActivity = $('.result:checked').val();/*selector for checkbox of activities*/
+        console.log(itineraryActivity);
     $.each(planner, function(element){
         if (itineraryDate == element.date) {
             element.activities.push(itineraryActivity);
