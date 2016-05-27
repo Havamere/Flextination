@@ -142,7 +142,7 @@ function newResults() {
     console.log(markerArr);
 
     //Refreshes the map results div with the new information
-    $("#mapResults").empty(); 
+    $("#list2").empty(); 
    
    if (markerArr) {  
     for (var i=0; i < markerArr.length; i++) {
@@ -189,7 +189,7 @@ function newResults() {
                     console.error(status);
                     return;
                 }
-                $('#mapResults').append("<p><b>Name:</b>" + result.name + "<p><b>Address:  </b>" + result.formatted_address + "<p><b>Phone number:  </b>" + result.formatted_phone_number + "<p><b>Rating: </b>" + result.rating);
+                $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p></li>");
 
                // infoWindow.open(map, marker);
 
