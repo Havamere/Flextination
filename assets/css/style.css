@@ -58,7 +58,10 @@
 
 #map {
     height: 500px;
-    width: 900px;
+}
+
+.btn {
+    margin: 4px;
 }
 
 #destinationWeatherContainer {

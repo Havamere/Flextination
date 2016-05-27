@@ -26,7 +26,7 @@ function initAutocomplete() {
 function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
-    console.log(place);
+    //console.log(place);
     lat = place.geometry.location.lat();
     long = place.geometry.location.lng()
 
@@ -59,7 +59,7 @@ function initMap() {
     var long = parseFloat(localStorage.getItem('long'));
 
     haightAshbury = { lat: lat, lng: long };
-    console.log(haightAshbury);
+    //console.log(haightAshbury);
     // console.log(lat, long);
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -76,10 +76,10 @@ function initMap() {
 
     // Adds a marker at the center of the map.
     var centerMarker = new google.maps.Marker({
-    position: haightAshbury,
-    icon: 'assets/images/center.png',
-    map: map
-  });
+        position: haightAshbury,
+        icon: 'assets/images/center.png',
+        map: map
+    });
 }
 
 // Adds a marker to the map and push to the array.
@@ -126,15 +126,16 @@ function newResults() {
     console.log(markerArr);
 
     //Refreshes the map results div with the new information
-    $("#list2").empty(); 
-   
-   if (markerArr) {  
-    for (var i=0; i < markerArr.length; i++) {
-    markerArr[i].setMap(null);
-}
-}
+    $("#list2").empty();
+
+    if (markerArr) {
+        for (var i = 0; i < markerArr.length; i++) {
+            markerArr[i].setMap(null);
+        }
+    }
     infoWindow = new google.maps.InfoWindow();
     service = new google.maps.places.PlacesService(map);
+
 
     var type = $(this).text();
     var request = {
@@ -150,7 +151,7 @@ function newResults() {
 
 
     function callback(results, status) {
-    console.log(results)
+        console.log(results)
         if (status == google.maps.places.PlacesServiceStatus.OK) {
 
             markerArr = [];
@@ -161,24 +162,36 @@ function newResults() {
         } else {
             alert("Sorry, there are no locations in your area");
         }
-        
+
     }
+
     function addResults(place) {
 
 
-            service.getDetails(place, function(result, status) {
-        
-                if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                    console.error(status);
-                    return;
-                }
+        service.getDetails(place, function(result, status) {
 
-                var btnHTML = '<button type="button" id = "itin" class="btn btn-default" data-name = result.name data-add = result.formatted_address>Add to Itinerary</button>'
-                $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p>" + btnHTML + "</li>");
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                console.error(status);
+                return;
+            }
 
-            });
+            $('#mapResults').append("<div class='col-xs-12 result'>" +
+                "<p><b>Name:</b>" + result.name +
+                "<p><b>address:  </b>" + result.formatted_address +
+                "<p><b>phone number:  </b>" + result.formatted_phone_number +
+                "<p><b>rating: </b>" + result.rating +
+                "</div>");
+
+            // infoWindow.open(map, marker);
+
+
+            var btnHTML = '<button type="button" id = "itin" class="btn btn-default" data-name = result.name data-add = result.formatted_address>Add to Itinerary</button>'
+            $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p>" + btnHTML + "</li>");
+
+        });
 
     }
+
     function addMarker(place) {
 
         var marker = new google.maps.Marker({
@@ -186,12 +199,12 @@ function newResults() {
             position: place.geometry.location,
 
         });
-                markerArr.push(marker);
-                console.log(markerArr);
+        markerArr.push(marker);
+        console.log(markerArr);
 
         google.maps.event.addListener(marker, 'click', function() {
             service.getDetails(place, function(result, status) {
-                console.log(result);
+                // console.log(result);
                 if (status !== google.maps.places.PlacesServiceStatus.OK) {
                     console.error(status);
                     return;
@@ -204,10 +217,10 @@ function newResults() {
         });
 
     }
-  
+
 }
 
-function addToItin(){
+function addToItin() {
     console.log("I was added to the Itinerary");
 
 }
