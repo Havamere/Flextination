@@ -23,3 +23,6 @@ function itinerary(date, weather, name, address, rating, phone) {
     this.phone = phone;
 }
 
+$('#print').on('click', function(){
+    $('#itinerary').printElement();
+})

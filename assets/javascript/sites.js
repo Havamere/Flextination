@@ -233,12 +233,13 @@ function newResults() {
 
 function addToItin() {
     console.log('inside addToItin function');
+    //pulls info from the button
     var name = $(this).attr('data-name');
     var address = $(this).attr('data-addr');
     var rating = $(this).attr('data-rating');
     var phone = $(this).attr('data-phone');
 
-
+    // pulls in info from the date/weather section
     var itinDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value*/
         //console.log(itineraryDate);
     var itinWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
@@ -255,14 +256,16 @@ function addToItin() {
 
     console.log(itineraryObj);
 
-    $('#itinerary').append('<div class="itinlist">'+
-                            '<p>'+itineraryObj.itinDate+'</p>'+
-                            '<p>'+itineraryObj.itinWeather+'</p>'+
-                            '<p>'+itineraryObj.name+'</p>'+
-                            '<p>'+itineraryObj.address+'</p>'+
-                            '<p>'+itineraryObj.rating+'</p>'+
-                            '<p>'+itineraryObj.phone+'</p>'+
+    $('#date-weather').append('<div class="day-and-weather">'+
+                            '<p>Date: '+itineraryObj.date+'</p>'+
+                            '<p>Forecast: '+itineraryObj.weather+'</p>'+
                             '</div>');
+
+    $('#place-to-go').append('<div class="place">'+
+                            '<p>Place: '+itineraryObj.name+'    Address: '+itineraryObj.address+'</p>'+
+                            '<p>Google User Rating: '+itineraryObj.rating+'    Phone Number: '+itineraryObj.phone+'</p>'+
+                            '</div>');
+
 
 }
 
