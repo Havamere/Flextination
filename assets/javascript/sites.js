@@ -68,7 +68,7 @@ function initMap() {
     // console.log(lat, long);
 
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
+        zoom: 13,
         center: haightAshbury,
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
@@ -156,9 +156,13 @@ function newResults() {
 
     var type = $(this).text();
     var request = {
-        bounds: map.getBounds(),
+        //bounds: map.getBounds(),
+        map: map,
+        location: haightAshbury,
         keyword: type,
         rankBy: google.maps.places.RankBy.PROMINENCE,
+        radius: 5000,
+        zoom: 13,
        // limit: 5,
 
     };
@@ -168,22 +172,20 @@ function newResults() {
 
 
     function callback(results, status) {
-        console.log(results)
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-
+        // console.log(results)//Array of results with place information
             markerArr = [];
+            for (var i = 0; i < results.length; i++) {
+            service.getDetails(results[i], function(result, status) {
+                    // console.log(result);
 
-            
-
-                for (var i = 0; i < 5; i++) {
-                    addMarker(results[i]);
-                    addResults(results[i]);
+                    if (result.rating > 4) {
+                    console.log("Only the best of the best, Ratings are greater than 4")
+                    addMarker(result);
+                    addResults(result);
                 }
-            
-        } else {
-            alert("Sorry, there are no locations in your area");
-        }
-
+                   
+            })
+            }//End for loop
     }
 
     function addResults(place) {
@@ -197,14 +199,14 @@ function newResults() {
             }
 
             var b = $('<button>');
-            b.addClass('btn btn-default addToItin')
-            b.text('Add To Itinerary');
-            b.attr('data-name', result.name);
-            b.attr('data-addr', result.formatted_address);
-            b.attr('data-phone', result.formatted_phone_number);
-            b.attr('data-rating', result.rating);
-
-            $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p></li>");
+                b.addClass('btn btn-default addToItin');
+                b.text('Add To Itinerary');
+                b.attr('data-name', place.name);
+                b.attr('data-addr', place.formatted_address);
+                b.attr('data-phone', place.formatted_phone_number);
+                b.attr('data-rating', place.rating);
+    
+            $('#list2').append("<li><p><b>Name: </b>" + place.name + "</p><p><b>Address: </b>" + place.formatted_address + "</p><p><b>Phone Number: </b>" + place.formatted_phone_number + "</p><p><b>Rating: </b>" + place.rating + "</p></li>");
             $('#list2').append(b);
 
         });
