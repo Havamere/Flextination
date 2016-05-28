@@ -65,6 +65,7 @@
     white-space: nowrap;
     overflow-x: scroll;
     overflow-y: auto;
+    font-family: AR Blanca, Garamond, sans serif;
 }
 #destinationWeatherContainer ul {
   display: inline-block;
@@ -80,6 +81,10 @@
   text-align: center;
 }
 
+#search-parameters{
+    font-family: Rockwell Extra Bold, Bookman Old Style, serif;
+}
+
 #mapResults {
  /*width:320px; */
 }
@@ -87,12 +92,8 @@
 #mapResults ol { 
     font-style:italic; 
     font-family:Georgia, Times, serif; 
-    font-size:24px; 
-    /*border-right: 1px solid #999;*/
-   
+    font-size:24px;    
 }
-#mapResults ol li {
- }
 
 #mapResults ol li p { 
     padding: 4px; 
@@ -108,6 +109,7 @@
 
 #itinerary {
     text-align: center;
+    font-family: AR Blanca, Garamond, sans serif;
 }
 
 .itinlist {
