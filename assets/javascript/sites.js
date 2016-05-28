@@ -1,5 +1,6 @@
 //Google API Key -- AIzaSyCGbLaGsRnpqv8rORu25GIJ5Xs_NzU0xR0
 
+
 var map;
 var infoWindow;
 var service;
@@ -8,6 +9,8 @@ var latlong = {};
 var haightAshbury = {};
 var autocomplete;
 var markerArr = [];
+
+
 
 function initAutocomplete() {
 
@@ -26,13 +29,14 @@ function initAutocomplete() {
 function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
-    //console.log(place);
+    console.log(place);
     lat = place.geometry.location.lat();
     long = place.geometry.location.lng()
+    address = place.formatted_address;
 
     localStorage.setItem('lat', lat);
     localStorage.setItem('long', long);
-
+    localStorage.setItem('address', address);
 }
 
 // Bias the autocomplete object to the user's geographical location,
@@ -116,8 +120,20 @@ function showMarkers() {
 
 
 function moveToInfo() {
+    console.log('sup');
     window.location.href = 'info.html';
     initMap();
+    var address2 = localStorage.getItem('address');
+    console.log(address2);
+   $(window).load(function() {
+    console.log('window loaded')
+    $('#search-parameters').html(address2);
+});
+      
+      
+       
+
+  
 }
 
 
@@ -142,7 +158,7 @@ function newResults() {
         bounds: map.getBounds(),
         keyword: type,
         rankBy: google.maps.places.RankBy.PROMINENCE,
-        limit: 5,
+       // limit: 5,
 
     };
 
@@ -155,10 +171,14 @@ function newResults() {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
 
             markerArr = [];
-            for (var i = 0; i < 5; i++) {
-                addMarker(results[i]);
-                addResults(results[i]);
-            }
+
+            
+
+                for (var i = 0; i < 5; i++) {
+                    addMarker(results[i]);
+                    addResults(results[i]);
+                }
+            
         } else {
             alert("Sorry, there are no locations in your area");
         }
@@ -176,13 +196,13 @@ function newResults() {
             }
 
             var b = $('<button>');
-                b.addClass('btn btn-default addToItin')
-                b.text('Add To Itinerary');
-                b.attr('data-name', result.name);
-                b.attr('data-addr', result.formatted_address);
-                b.attr('data-phone', result.formatted_phone_number);
-                b.attr('data-rating', result.rating);
-    
+            b.addClass('btn btn-default addToItin')
+            b.text('Add To Itinerary');
+            b.attr('data-name', result.name);
+            b.attr('data-addr', result.formatted_address);
+            b.attr('data-phone', result.formatted_phone_number);
+            b.attr('data-rating', result.rating);
+
             $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p></li>");
             $('#list2').append(b);
 
@@ -225,10 +245,10 @@ function addToItin() {
     var rating = $(this).attr('data-rating');
     var phone = $(this).attr('data-phone');
 
-    var itineraryDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value*/
-        //console.log(itineraryDate);
-    var itineraryWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
-        //console.log(itineraryWeather);
+    var itineraryDate = $('.weatherRadioButtons:checked').attr('data'); /*selector for radio button date value*/
+    //console.log(itineraryDate);
+    var itineraryWeather = $('.weatherRadioButtons:checked').val(); /*selector for radio button weather value*/
+    //console.log(itineraryWeather);
 
     console.log('name: ' + name);
     console.log('address: ' + address);
