@@ -274,3 +274,13 @@
         margin-top: 300px;
     }
 }
+
+@media print #itinerary {
+    .day-and-weather {
+        width: 30%;
+    }
+
+    .place {
+        width: 70%;
+    }
+}

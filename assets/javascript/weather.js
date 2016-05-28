@@ -21,16 +21,14 @@
       method: 'GET'
     })
     .done(function(response) {
-          //console.log(response);
-          var tryDate = "2016/05/";
-          console.log(tryDate);
-          // console.log(tryDate+2);
           for (var i = 0; i < response.list.length - 1; i++) {
             // console.log(response);
+
+            //builds weather forecast at top of page
             $('#destinationWeatherContainer').append('<ul id="destinationWeatherContent' + i + '">');
             $('#destinationWeatherContent' + i).append('<li>' + response.list[i].dt_txt + '</li>');
             $('#destinationWeatherContent' + i).append('<i class="owf owf-' + response.list[i].weather[0].id + ' owf-5x"></i>');
-            $('#destinationWeatherContent' + i).append('<input type="radio" name="weatherRadioButtons" data='+ start + i +' value="' + response.list[i].weather[0].description + '" class="weatherRadioButtons" id="weatherRadioButton' + i + '">');
+            $('#destinationWeatherContent' + i).append('<input type="radio" name="weatherRadioButtons" data='+ response.list[i].dt_txt +' value="' + response.list[i].weather[0].description + '" class="weatherRadioButtons" id="weatherRadioButton' + i + '">');
             $('#destinationWeatherContent' + i).append('<li>prevailing conditions = ' + response.list[i].weather[0].description + '</li>');
             $('#destinationWeatherContent' + i).append('<li>temperature = ' + response.list[i].main.temp + '\&deg;F</li>');
             $('#destinationWeatherContent' + i).append('<li>humidity = ' + response.list[i].main.humidity + '%</li>');

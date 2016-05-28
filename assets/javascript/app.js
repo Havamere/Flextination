@@ -1,4 +1,4 @@
-
+//function for calendar drop-ups
 $( function () {
         $('#datetimepicker6').datetimepicker();
         $('#datetimepicker7').datetimepicker({
@@ -13,7 +13,7 @@ $( function () {
     });
 $('.dropdown-toggle').dropdown();
 
-
+//builds itinerary object
 function itinerary(date, weather, name, address, rating, phone) {
     this.date = date;
     this.weather = weather;
@@ -22,7 +22,3 @@ function itinerary(date, weather, name, address, rating, phone) {
     this.rating = rating;
     this.phone = phone;
 }
-
-$('#print').on('click', function(){
-    $('#itinerary').printElement();
-})

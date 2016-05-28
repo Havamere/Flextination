@@ -230,7 +230,7 @@ function newResults() {
     }
 
 }
-
+// builds Itinerary  at itinerary section of page
 function addToItin() {
     console.log('inside addToItin function');
     //pulls info from the button
@@ -244,7 +244,7 @@ function addToItin() {
         //console.log(itineraryDate);
     var itinWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
         //console.log(itineraryWeather);
-
+    //tests info collection
     console.log('name: ' + name);
     console.log('address: ' + address);
     console.log('rating: ' + rating);
@@ -255,6 +255,8 @@ function addToItin() {
     var itineraryObj = new itinerary(itinDate, itinWeather, name, address, rating, phone);
 
     console.log(itineraryObj);
+
+//builds Itinerary to page
 
     $('#date-weather').append('<div class="day-and-weather">'+
                             '<p>Date: '+itineraryObj.date+'</p>'+
