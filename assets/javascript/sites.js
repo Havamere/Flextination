@@ -225,17 +225,30 @@ function addToItin() {
     var rating = $(this).attr('data-rating');
     var phone = $(this).attr('data-phone');
 
-    var itineraryDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value*/
+    var itinDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value*/
         //console.log(itineraryDate);
-    var itineraryWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
+    var itinWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
         //console.log(itineraryWeather);
 
     console.log('name: ' + name);
     console.log('address: ' + address);
     console.log('rating: ' + rating);
     console.log('phone: ' + phone);
-    console.log('itineraryDate: ' + itineraryDate);
-    console.log('itineraryWeather: ' + itineraryWeather);
+    console.log('itineraryDate: ' + itinDate);
+    console.log('itineraryWeather: ' + itinWeather);
+
+    var itineraryObj = new itinerary(itinDate, itinWeather, name, address, rating, phone);
+
+    console.log(itineraryObj);
+
+    $('#itinerary').append('<div class="itinlist">'+
+                            '<p>'+itineraryObj.itinDate+'</p>'+
+                            '<p>'+itineraryObj.itinWeather+'</p>'+
+                            '<p>'+itineraryObj.name+'</p>'+
+                            '<p>'+itineraryObj.address+'</p>'+
+                            '<p>'+itineraryObj.rating+'</p>'+
+                            '<p>'+itineraryObj.phone+'</p>'+
+                            '</div>');
 
 }
 

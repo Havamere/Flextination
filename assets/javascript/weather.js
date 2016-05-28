@@ -38,7 +38,7 @@
             $('#destinationWeatherContainer').append('<ul id="destinationWeatherContent' + i + '">');
             $('#destinationWeatherContent' + i).append('<li>' + response.list[i].dt_txt + '</li>');
             $('#destinationWeatherContent' + i).append('<i class="owf owf-' + response.list[i].weather[0].id + ' owf-5x"></i>');
-            $('.owf').html('<input type="radio" name="weatherRadioButtons" data='+ tryDate + i +' value="' + response.list[i].weather[0].description + '" class="weatherRadioButtons" id="weatherRadioButton' + i + '">');
+            $('#destinationWeatherContent' + i).append('<input type="radio" name="weatherRadioButtons" data='+ tryDate + i +' value="' + response.list[i].weather[0].description + '" class="weatherRadioButtons" id="weatherRadioButton' + i + '">');
             $('#destinationWeatherContent' + i).append('<li>weather-description = ' + response.list[i].weather[0].description + '</li>');
             $('#destinationWeatherContent' + i).append('<li>temperature = ' + response.list[i].main.temp + 'ºF</li>');
             $('#destinationWeatherContent' + i).append('<li>humidity = ' + response.list[i].main.humidity + '%</li>');
