@@ -238,12 +238,8 @@ function addToItin() {
     var address = $(this).attr('data-addr');
     var rating = $(this).attr('data-rating');
     var phone = $(this).attr('data-phone');
-<<<<<<< HEAD
-    // pullin info from the date/weather section
-=======
 
-
->>>>>>> 72b74e9a6b3f72a898892238ec6717dfd28ee523
+    // pulls in info from the date/weather section
     var itinDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value*/
         //console.log(itineraryDate);
     var itinWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
