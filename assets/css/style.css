@@ -83,6 +83,7 @@
 
 #search-parameters{
     font-family: Rockwell Extra Bold, Bookman Old Style, serif;
+    font-size: 15px;
 }
 
 #mapResults {
@@ -110,6 +111,7 @@
 #itinerary {
     text-align: center;
     font-family: AR Blanca, Garamond, sans serif;
+    font-size: 16px;
 }
 
 .itinlist {

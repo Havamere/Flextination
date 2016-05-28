@@ -262,8 +262,8 @@ function addToItin() {
                             '</div>');
 
     $('#place-to-go').append('<div class="place">'+
-                            '<p>Place: '+itineraryObj.name+'    Address: '+itineraryObj.address+'</p>'+
-                            '<p>Google User Rating: '+itineraryObj.rating+'    Phone Number: '+itineraryObj.phone+'</p>'+
+                            '<p>Place: '+itineraryObj.name+'  |  Address: '+itineraryObj.address+'</p>'+
+                            '<p>Google User Rating: '+itineraryObj.rating+'  |  Phone Number: '+itineraryObj.phone+'</p>'+
                             '</div>');
 
 
