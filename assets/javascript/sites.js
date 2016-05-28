@@ -73,12 +73,6 @@ function initMap() {
         mapTypeId: google.maps.MapTypeId.TERRAIN
     });
 
-    // This event listener will call addMarker() when the map is clicked.
-    map.addListener('click', function(event) {
-        addMarker(event.latLng);
-
-    });
-
     // Adds a marker at the center of the map.
     var centerMarker = new google.maps.Marker({
         position: haightAshbury,
