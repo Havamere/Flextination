@@ -28,10 +28,11 @@ function fillInAddress() {
     var place = autocomplete.getPlace();
     //console.log(place);
     lat = place.geometry.location.lat();
-    long = place.geometry.location.lng()
-
+    long = place.geometry.location.lng();
+    address = place.formatted_address;
     localStorage.setItem('lat', lat);
     localStorage.setItem('long', long);
+    localStorage.setItem('address', address);
 
 }
 
