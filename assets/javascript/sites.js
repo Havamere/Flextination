@@ -1,5 +1,6 @@
 //Google API Key -- AIzaSyCGbLaGsRnpqv8rORu25GIJ5Xs_NzU0xR0
 
+
 var map;
 var infoWindow;
 var service;
@@ -8,6 +9,8 @@ var latlong = {};
 var haightAshbury = {};
 var autocomplete;
 var markerArr = [];
+
+
 
 function initAutocomplete() {
 
@@ -26,10 +29,11 @@ function initAutocomplete() {
 function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
-    //console.log(place);
+   // console.log(place);
     lat = place.geometry.location.lat();
-    long = place.geometry.location.lng();
+    long = place.geometry.location.lng()
     address = place.formatted_address;
+
     localStorage.setItem('lat', lat);
     localStorage.setItem('long', long);
     localStorage.setItem('address', address);
@@ -64,15 +68,9 @@ function initMap() {
     // console.log(lat, long);
 
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
+        zoom: 13,
         center: haightAshbury,
         mapTypeId: google.maps.MapTypeId.TERRAIN
-    });
-
-    // This event listener will call addMarker() when the map is clicked.
-    map.addListener('click', function(event) {
-        addMarker(event.latLng);
-
     });
 
     // Adds a marker at the center of the map.
@@ -117,8 +115,28 @@ function showMarkers() {
 
 
 function moveToInfo() {
+
+    var startDate = $('#startDate').val();
+    var endDate = $('#endDate').val();
+
+    localStorage.setItem('startDate', startDate);
+    localStorage.setItem('endDate', endDate);
+
+
+    console.log('sup');
     window.location.href = 'info.html';
     initMap();
+    var address2 = localStorage.getItem('address');
+    console.log(address2);
+   $(window).load(function() {
+    console.log('window loaded')
+    $('#search-parameters').html(address2);
+});
+      
+      
+       
+
+  
 }
 
 
@@ -140,10 +158,14 @@ function newResults() {
 
     var type = $(this).text();
     var request = {
-        bounds: map.getBounds(),
+        //bounds: map.getBounds(),
+        map: map,
+        location: haightAshbury,
         keyword: type,
         rankBy: google.maps.places.RankBy.PROMINENCE,
-        limit: 5,
+        radius: 5000,
+        zoom: 13,
+       // limit: 5,
 
     };
 
@@ -152,43 +174,33 @@ function newResults() {
 
 
     function callback(results, status) {
-        console.log(results)
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-
+        // console.log(results)//Array of results with place information
             markerArr = [];
-            for (var i = 0; i < 5; i++) {
-                addMarker(results[i]);
-                addResults(results[i]);
-            }
-        } else {
-            alert("Sorry, there are no locations in your area");
-        }
+            for (var i = 0; i < results.length; i++) {
+            service.getDetails(results[i], function(result, status) {
+                    // console.log(result);
 
+                    if (result.rating > 4) {
+                    console.log("Only the best of the best, Ratings are greater than 4")
+                    addMarker(result);
+                    addResults(result);
+                }
+                   
+            })
+            }//End for loop
     }
 
     function addResults(place) {
-
-
-        service.getDetails(place, function(result, status) {
-
-            if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                console.error(status);
-                return;
-            }
-
             var b = $('<button>');
-                b.addClass('btn btn-default addToItin')
+                b.addClass('btn btn-default addToItin');
                 b.text('Add To Itinerary');
-                b.attr('data-name', result.name);
-                b.attr('data-addr', result.formatted_address);
-                b.attr('data-phone', result.formatted_phone_number);
-                b.attr('data-rating', result.rating);
+                b.attr('data-name', place.name);
+                b.attr('data-addr', place.formatted_address);
+                b.attr('data-phone', place.formatted_phone_number);
+                b.attr('data-rating', place.rating);
     
-            $('#list2').append("<li><p><b>Name: </b>" + result.name + "</p><p><b>Address: </b>" + result.formatted_address + "</p><p><b>Phone Number: </b>" + result.formatted_phone_number + "</p><p><b>Rating: </b>" + result.rating + "</p></li>");
+            $('#list2').append("<li><p><b>Name: </b>" + place.name + "</p><p><b>Address: </b>" + place.formatted_address + "</p><p><b>Phone Number: </b>" + place.formatted_phone_number + "</p><p><b>Rating: </b>" + place.rating + "</p></li>");
             $('#list2').append(b);
-
-        });
-
     }
 
     function addMarker(place) {
@@ -226,7 +238,12 @@ function addToItin() {
     var address = $(this).attr('data-addr');
     var rating = $(this).attr('data-rating');
     var phone = $(this).attr('data-phone');
+<<<<<<< HEAD
     // pullin info from the date/weather section
+=======
+
+
+>>>>>>> 72b74e9a6b3f72a898892238ec6717dfd28ee523
     var itinDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value*/
         //console.log(itineraryDate);
     var itinWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
