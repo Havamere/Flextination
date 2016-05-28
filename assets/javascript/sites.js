@@ -233,7 +233,7 @@ function addToItin() {
     //console.log(itineraryDate);
     var itinWeather = $('.weatherRadioButtons:checked').val(); /*selector for radio button weather value*/
     //console.log(itineraryWeather);
-
+    
     console.log('name: ' + name);
     console.log('address: ' + address);
     console.log('rating: ' + rating);

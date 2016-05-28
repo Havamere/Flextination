@@ -43,7 +43,7 @@ console.log(queryURL);
                 $('#destinationWeatherContainer').append('<ul id="destinationWeatherContent' + i + '">');
                 $('#destinationWeatherContent' + i).append('<li>' + response.forecast.simpleforecast.forecastday[i].date.pretty + '</li>');
                 // $('#destinationWeatherContent' + i).append('<i class="owf owf-' + response.list[i].weather[0].id + ' owf-5x"></i>');
-                // $('#destinationWeatherContent' + i).append('<input type="radio" name="weatherRadioButtons" data=' + start + i + ' value="' + response.list[i].weather[0].description + '" class="weatherRadioButtons" id="weatherRadioButton' + i + '">');
+                $('#destinationWeatherContent' + i).append('<input type="radio" name="weatherRadioButtons" data=' + start + i + ' value="' + response.forecast.simpleforecast.forecastday[i].conditions + '" class="weatherRadioButtons" id="weatherRadioButton' + i + '">');
                 $('#destinationWeatherContent' + i).append('<li>weather-description = ' + response.forecast.simpleforecast.forecastday[i].conditions + '</li>');
                 $('#destinationWeatherContent' + i).append('<li>temperature high = ' + response.forecast.simpleforecast.forecastday[i].high.fahrenheit + '\&deg;F</li>');
                 $('#destinationWeatherContent' + i).append('<li>temperature low = ' + response.forecast.simpleforecast.forecastday[i].low.fahrenheit + '%</li>');
