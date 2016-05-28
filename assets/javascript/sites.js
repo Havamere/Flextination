@@ -115,6 +115,14 @@ function showMarkers() {
 
 
 function moveToInfo() {
+
+    var startDate = $('#startDate').val();
+    var endDate = $('#endDate').val();
+
+    localStorage.setItem('startDate', startDate);
+    localStorage.setItem('endDate', endDate);
+
+
     console.log('sup');
     window.location.href = 'info.html';
     initMap();
@@ -183,15 +191,6 @@ function newResults() {
     }
 
     function addResults(place) {
-
-
-        service.getDetails(place, function(result, status) {
-
-            if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                console.error(status);
-                return;
-            }
-
             var b = $('<button>');
                 b.addClass('btn btn-default addToItin');
                 b.text('Add To Itinerary');
@@ -202,9 +201,6 @@ function newResults() {
     
             $('#list2').append("<li><p><b>Name: </b>" + place.name + "</p><p><b>Address: </b>" + place.formatted_address + "</p><p><b>Phone Number: </b>" + place.formatted_phone_number + "</p><p><b>Rating: </b>" + place.rating + "</p></li>");
             $('#list2').append(b);
-
-        });
-
     }
 
     function addMarker(place) {
