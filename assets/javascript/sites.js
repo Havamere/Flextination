@@ -255,7 +255,6 @@ function addToItin() {
         '<p>Google User Rating: ' + itineraryObj.rating + '    Phone Number: ' + itineraryObj.phone + '</p>' +
         '</div>');
 
-
 }
 
 
