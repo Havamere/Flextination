@@ -121,6 +121,14 @@ function showMarkers() {
 
 
 function moveToInfo() {
+
+    var startDate = $('#startDate').val();
+    var endDate = $('#endDate').val();
+
+    localStorage.setItem('startDate', startDate);
+    localStorage.setItem('endDate', endDate);
+
+
     console.log('sup');
     window.location.href = 'info.html';
     initMap();
