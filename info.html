@@ -12,6 +12,7 @@
 	<link href="assets/css/owfont-regular.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<script type="text/javascript" src="assets/javascript/sites.js"></script>
+	<script type="text/javascript" src="assets/javascript/printElement.js"></script>
 
 	<!-- callback initmap removed -->
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGbLaGsRnpqv8rORu25GIJ5Xs_NzU0xR0&libraries=places,visualization" async defer></script> -->
@@ -61,7 +62,9 @@
 		</div>
 	</div>
 	<div class="row">
-		<div id="itinerary" class="col-xs-10 col-xs-offset-1"><h3>Itinerary</h3></div>
+		<div id="itinerary" class="col-xs-10 col-xs-offset-1">
+			<h3>Itinerary</h3>
+			<button type="button" id="print" class="btn btn-primary btn-sm glyphicon glyphicon-print"></button>
 		<div class="row">
 			<div id="date-weather" class="col-xs-3 col-xs-offset-1"><h4>Day/Weather</h4></div>
 			<div id="place-to-go" class="col-xs-7"><h4>Thing To Do</h4></div>
