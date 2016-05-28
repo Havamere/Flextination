@@ -29,7 +29,7 @@ function initAutocomplete() {
 function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
-    console.log(place);
+   // console.log(place);
     lat = place.geometry.location.lat();
     long = place.geometry.location.lng()
     address = place.formatted_address;
@@ -37,6 +37,7 @@ function fillInAddress() {
     localStorage.setItem('lat', lat);
     localStorage.setItem('long', long);
     localStorage.setItem('address', address);
+
 }
 
 // Bias the autocomplete object to the user's geographical location,
@@ -245,17 +246,31 @@ function addToItin() {
     var rating = $(this).attr('data-rating');
     var phone = $(this).attr('data-phone');
 
-    var itineraryDate = $('.weatherRadioButtons:checked').attr('data'); /*selector for radio button date value*/
-    //console.log(itineraryDate);
-    var itineraryWeather = $('.weatherRadioButtons:checked').val(); /*selector for radio button weather value*/
-    //console.log(itineraryWeather);
+
+    var itinDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value*/
+        //console.log(itineraryDate);
+    var itinWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
+        //console.log(itineraryWeather);
 
     console.log('name: ' + name);
     console.log('address: ' + address);
     console.log('rating: ' + rating);
     console.log('phone: ' + phone);
-    console.log('itineraryDate: ' + itineraryDate);
-    console.log('itineraryWeather: ' + itineraryWeather);
+    console.log('itineraryDate: ' + itinDate);
+    console.log('itineraryWeather: ' + itinWeather);
+
+    var itineraryObj = new itinerary(itinDate, itinWeather, name, address, rating, phone);
+
+    console.log(itineraryObj);
+
+    $('#itinerary').append('<div class="itinlist">'+
+                            '<p>'+itineraryObj.itinDate+'</p>'+
+                            '<p>'+itineraryObj.itinWeather+'</p>'+
+                            '<p>'+itineraryObj.name+'</p>'+
+                            '<p>'+itineraryObj.address+'</p>'+
+                            '<p>'+itineraryObj.rating+'</p>'+
+                            '<p>'+itineraryObj.phone+'</p>'+
+                            '</div>');
 
 }
 
