@@ -29,7 +29,7 @@ function initAutocomplete() {
 function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
-   // console.log(place);
+    // console.log(place);
     lat = place.geometry.location.lat();
     long = place.geometry.location.lng()
     address = place.formatted_address;
@@ -123,20 +123,9 @@ function moveToInfo() {
     localStorage.setItem('endDate', endDate);
 
 
-    console.log('sup');
     window.location.href = 'info.html';
     initMap();
-    var address2 = localStorage.getItem('address');
-    console.log(address2);
-   $(window).load(function() {
-    console.log('window loaded')
-    $('#search-parameters').html(address2);
-});
-      
-      
-       
 
-  
 }
 
 
@@ -165,7 +154,7 @@ function newResults() {
         rankBy: google.maps.places.RankBy.PROMINENCE,
         radius: 5000,
         zoom: 13,
-       // limit: 5,
+        // limit: 5,
 
     };
 
@@ -175,32 +164,32 @@ function newResults() {
 
     function callback(results, status) {
         // console.log(results)//Array of results with place information
-            markerArr = [];
-            for (var i = 0; i < results.length; i++) {
+        markerArr = [];
+        for (var i = 0; i < results.length; i++) {
             service.getDetails(results[i], function(result, status) {
-                    // console.log(result);
+                // console.log(result);
 
-                    if (result.rating > 4) {
+                if (result.rating > 4) {
                     console.log("Only the best of the best, Ratings are greater than 4")
                     addMarker(result);
                     addResults(result);
                 }
-                   
+
             })
-            }//End for loop
+        } //End for loop
     }
 
     function addResults(place) {
-            var b = $('<button>');
-                b.addClass('btn btn-default addToItin');
-                b.text('Add To Itinerary');
-                b.attr('data-name', place.name);
-                b.attr('data-addr', place.formatted_address);
-                b.attr('data-phone', place.formatted_phone_number);
-                b.attr('data-rating', place.rating);
-    
-            $('#list2').append("<li><p><b>Name: </b>" + place.name + "</p><p><b>Address: </b>" + place.formatted_address + "</p><p><b>Phone Number: </b>" + place.formatted_phone_number + "</p><p><b>Rating: </b>" + place.rating + "</p></li>");
-            $('#list2').append(b);
+        var b = $('<button>');
+        b.addClass('btn btn-default addToItin');
+        b.text('Add To Itinerary');
+        b.attr('data-name', place.name);
+        b.attr('data-addr', place.formatted_address);
+        b.attr('data-phone', place.formatted_phone_number);
+        b.attr('data-rating', place.rating);
+
+        $('#list2').append("<li><p><b>Name: </b>" + place.name + "</p><p><b>Address: </b>" + place.formatted_address + "</p><p><b>Phone Number: </b>" + place.formatted_phone_number + "</p><p><b>Rating: </b>" + place.rating + "</p></li>");
+        $('#list2').append(b);
     }
 
     function addMarker(place) {
@@ -240,10 +229,10 @@ function addToItin() {
     var phone = $(this).attr('data-phone');
 
     // pulls in info from the date/weather section
-    var itinDate = $('.weatherRadioButtons:checked').attr('data');/*selector for radio button date value*/
-        //console.log(itineraryDate);
-    var itinWeather = $('.weatherRadioButtons:checked').val();/*selector for radio button weather value*/
-        //console.log(itineraryWeather);
+    var itinDate = $('.weatherRadioButtons:checked').attr('data'); /*selector for radio button date value*/
+    //console.log(itineraryDate);
+    var itinWeather = $('.weatherRadioButtons:checked').val(); /*selector for radio button weather value*/
+    //console.log(itineraryWeather);
 
     console.log('name: ' + name);
     console.log('address: ' + address);
@@ -256,18 +245,19 @@ function addToItin() {
 
     console.log(itineraryObj);
 
-    $('#date-weather').append('<div class="day-and-weather">'+
-                            '<p>Date: '+itineraryObj.date+'</p>'+
-                            '<p>Forecast: '+itineraryObj.weather+'</p>'+
-                            '</div>');
+    $('#date-weather').append('<div class="day-and-weather">' +
+        '<p>Date: ' + itineraryObj.date + '</p>' +
+        '<p>Forecast: ' + itineraryObj.weather + '</p>' +
+        '</div>');
 
-    $('#place-to-go').append('<div class="place">'+
-                            '<p>Place: '+itineraryObj.name+'    Address: '+itineraryObj.address+'</p>'+
-                            '<p>Google User Rating: '+itineraryObj.rating+'    Phone Number: '+itineraryObj.phone+'</p>'+
-                            '</div>');
+    $('#place-to-go').append('<div class="place">' +
+        '<p>Place: ' + itineraryObj.name + '    Address: ' + itineraryObj.address + '</p>' +
+        '<p>Google User Rating: ' + itineraryObj.rating + '    Phone Number: ' + itineraryObj.phone + '</p>' +
+        '</div>');
 
 
 }
+
 
 $(document).on('click', '#next', moveToInfo);
 
